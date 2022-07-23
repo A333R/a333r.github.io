@@ -1636,17 +1636,17 @@ function qwqdraw1(now) {
 		for (const i of Renderer.reverseholds) drawNote(i, timeChart, 3);
 	}
 	//绘制背景
-	if (qwq[4]) ctxos.filter = `hue-rotate(${energy*360/7}deg)`;
+	//if (qwq[4]) ctxos.filter = `hue-rotate(${energy*360/7}deg)`;
 	if (qwqIn.second >= 2.5) drawLine(stat.lineStatus ? 2 : 1); //绘制判定线(背景前1)
-	if (qwq[4]) ctxos.filter = 'none';
-	ctxos.resetTransform();
-	ctxos.fillStyle = '#000'; //背景变暗
-	ctxos.globalAlpha = selectglobalalpha.value == '' ? 0.6 : selectglobalalpha.value; //背景不透明度
-	ctxos.fillRect(0, 0, canvasos.width, canvasos.height);
-	if (qwq[4]) ctxos.filter = `hue-rotate(${energy*360/7}deg)`;
+	//if (qwq[4]) ctxos.filter = 'none';
+	//ctxos.resetTransform();
+	//ctxos.fillStyle = '#000'; //背景变暗
+	//ctxos.globalAlpha = selectglobalalpha.value == '' ? 0.6 : selectglobalalpha.value; //背景不透明度
+	//ctxos.fillRect(0, 0, canvasos.width, canvasos.height);
+	//if (qwq[4]) ctxos.filter = `hue-rotate(${energy*360/7}deg)`;
 	if (qwqIn.second >= 2.5 && !stat.lineStatus) drawLine(0); //绘制判定线(背景后0)
-	if (qwq[4]) ctxos.filter = 'none';
-	ctxos.globalAlpha = 1;
+	//if (qwq[4]) ctxos.filter = 'none';
+	//ctxos.globalAlpha = 1;
 	ctxos.resetTransform();
 	if (document.getElementById('imageBlur').checked) {
 		ctxos.drawImage(Renderer.bgImageBlur, ...adjustSize(Renderer.bgImageBlur, canvasos, 1));
@@ -1656,8 +1656,8 @@ function qwqdraw1(now) {
 	ctxos.fillRect(0, 0, canvasos.width, canvasos.height);
 	ctxos.globalCompositeOperation = 'source-over';
 	//绘制进度条
-	ctxos.setTransform(canvasos.width / 1920, 0, 0, canvasos.width / 1920, 0, lineScale * (qwqIn.second < 0.67 ? (tween[2](qwqIn.second * 1.5) - 1) : -tween[2](qwqOut.second * 1.5)) * 1.75);
-	ctxos.drawImage(res['ProgressBar'], (qwq[5] ? duration - timeBgm : timeBgm) / duration * 1920 - 1920, 0);
+	//ctxos.setTransform(canvasos.width / 1920, 0, 0, canvasos.width / 1920, 0, lineScale * (qwqIn.second < 0.67 ? (tween[2](qwqIn.second * 1.5) - 1) : -tween[2](qwqOut.second * 1.5)) * 1.75);
+	//ctxos.drawImage(res['ProgressBar'], (qwq[5] ? duration - timeBgm : timeBgm) / duration * 1920 - 1920, 0);
 	//绘制文字
 	ctxos.resetTransform();
 	ctxos.fillStyle = '#fff';
@@ -1698,13 +1698,13 @@ function qwqdraw1(now) {
 	ctxos.textAlign = 'right';
 	ctxos.fillText(stat.scoreStr, canvasos.width - lineScale * 0.65, lineScale * 1.375);
 	if (!qwq[0]) ctxos.drawImage(res['Pause'], lineScale * 0.6, lineScale * 0.7, lineScale * 0.63, lineScale * 0.7);
-	if (stat.combo > 2) {
+	if (stat.combo > -1) {
 		ctxos.textAlign = 'center';
-		ctxos.font = `${lineScale * 1.32}px Mina,Noto Sans SC`;
+		ctxos.font = `${lineScale * 0.66}px Mina,Noto Sans SC`;
 		ctxos.fillText(autoplay.checked ? 'Autoplay' : 'combo', wlen, lineScale * 2.05);
 		ctxos.fillStyle = '#FFD000';
 		ctxos.globalAlpha = qwqIn.second < 0.67 ? tween[2](qwqIn.second * 1.5) : (1 - tween[2](qwqOut.second * 1.5));
-		ctxos.font = `${lineScale * 0.66}px Mina,Noto Sans SC`;
+		ctxos.font = `${lineScale * 1.32}px Mina,Noto Sans SC`;
 		ctxos.fillText(stat.combo, wlen, lineScale * 1.375);
 		ctxos.fillStyle = '#FFD000';
 	}
