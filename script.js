@@ -1663,32 +1663,32 @@ function qwqdraw1(now) {
 	ctxos.fillStyle = '#fff';
 	//开头过渡动画
 	if (qwqIn.second < 3) {
-		if (qwqIn.second < 0.67) ctxos.globalAlpha = tween[2](qwqIn.second * 1.5);
-		else if (qwqIn.second >= 2.5) ctxos.globalAlpha = tween[2](6 - qwqIn.second * 2);
-		ctxos.textAlign = 'center';
-		//歌名
-		ctxos.textBaseline = 'alphabetic';
-		ctxos.font = `${lineScale * 1.1}px Mina,Noto Sans SC`;
-		const dxsnm = ctxos.measureText(inputName.value || inputName.placeholder).width;
-		if (dxsnm > canvasos.width - lineScale * 1.5) ctxos.font = `${(lineScale) * 1.1/dxsnm*(canvasos.width-lineScale*1.5)}px Mina,Noto Sans SC`;
-		ctxos.fillText(inputName.value || inputName.placeholder, wlen, hlen * 0.75);
-		//曲绘和谱师
-		ctxos.textBaseline = 'top';
-		ctxos.font = `${lineScale * 0.55}px Mina,Noto Sans SC`;
-		const dxi = ctxos.measureText(`Illustration designed by ${inputIllustrator.value || inputIllustrator.placeholder}`).width;
-		if (dxi > canvasos.width - lineScale * 1.5) ctxos.font = `${(lineScale) * 0.55/dxi*(canvasos.width-lineScale*1.5)}px Mina,Noto Sans SC`;
-		ctxos.fillText(`Illustration designed by ${inputIllustrator.value || inputIllustrator.placeholder}`, wlen, hlen * 1.25 + lineScale * 0.15);
-		ctxos.font = `${lineScale * 0.55}px Mina,Noto Sans SC`;
-		const dxc = ctxos.measureText(`Level designed by ${inputDesigner.value || inputDesigner.placeholder}`).width;
-		if (dxc > canvasos.width - lineScale * 1.5) ctxos.font = `${(lineScale) * 0.55/dxc*(canvasos.width-lineScale*1.5)}px Mina,Noto Sans SC`;
-		ctxos.fillText(`Level designed by ${inputDesigner.value || inputDesigner.placeholder}`, wlen, hlen * 1.25 + lineScale * 1.0);
+		//if (qwqIn.second < 0.67) ctxos.globalAlpha = tween[2](qwqIn.second * 1.5);
+		//else if (qwqIn.second >= 2.5) ctxos.globalAlpha = tween[2](6 - qwqIn.second * 2);
+		//ctxos.textAlign = 'center';
+		//歌名(旧版没有)
+		//ctxos.textBaseline = 'alphabetic';
+		//ctxos.font = `${lineScale * 1.1}px Mina,Noto Sans SC`;
+		//const dxsnm = ctxos.measureText(inputName.value || inputName.placeholder).width;
+		//if (dxsnm > canvasos.width - lineScale * 1.5) ctxos.font = `${(lineScale) * 1.1/dxsnm*(canvasos.width-lineScale*1.5)}px Mina,Noto Sans SC`;
+		//ctxos.fillText(inputName.value || inputName.placeholder, wlen, hlen * 0.75);
+		//曲绘和谱师(旧版没有)
+		//ctxos.textBaseline = 'top';
+		//ctxos.font = `${lineScale * 0.55}px Mina,Noto Sans SC`;
+		//const dxi = ctxos.measureText(`Illustration designed by ${inputIllustrator.value || inputIllustrator.placeholder}`).width;
+		//if (dxi > canvasos.width - lineScale * 1.5) ctxos.font = `${(lineScale) * 0.55/dxi*(canvasos.width-lineScale*1.5)}px Mina,Noto Sans SC`;
+		//ctxos.fillText(`Illustration designed by ${inputIllustrator.value || inputIllustrator.placeholder}`, wlen, hlen * 1.25 + lineScale * 0.15);
+		//ctxos.font = `${lineScale * 0.55}px Mina,Noto Sans SC`;
+		//const dxc = ctxos.measureText(`Level designed by ${inputDesigner.value || inputDesigner.placeholder}`).width;
+		//if (dxc > canvasos.width - lineScale * 1.5) ctxos.font = `${(lineScale) * 0.55/dxc*(canvasos.width-lineScale*1.5)}px Mina,Noto Sans SC`;
+		//ctxos.fillText(`Level designed by ${inputDesigner.value || inputDesigner.placeholder}`, wlen, hlen * 1.25 + lineScale * 1.0);
 		//判定线(装饰用)
-		ctxos.globalAlpha = 1;
-		ctxos.setTransform(1, 0, 0, 1, wlen, hlen);
-		const imgW = lineScale * 48 * (qwqIn.second < 0.67 ? tween[3](qwqIn.second * 1.5) : 1);
-		const imgH = lineScale * 0.15;
-		if (qwqIn.second >= 2.5) ctxos.globalAlpha = tween[2](6 - qwqIn.second * 2);
-		ctxos.drawImage(lineColor.checked ? res['JudgeLineMP'] : res['JudgeLine'], -imgW / 2, -imgH / 2, imgW, imgH);
+		//ctxos.globalAlpha = 1;
+		//ctxos.setTransform(1, 0, 0, 1, wlen, hlen);
+		//const imgW = lineScale * 48 * (qwqIn.second < 0.67 ? tween[3](qwqIn.second * 1.5) : 1);
+		//const imgH = lineScale * 0.15;
+		//if (qwqIn.second >= 2.5) ctxos.globalAlpha = tween[2](6 - qwqIn.second * 2);
+		//ctxos.drawImage(lineColor.checked ? res['JudgeLineMP'] : res['JudgeLine'], -imgW / 2, -imgH / 2, imgW, imgH);
 	}
 	//绘制分数和combo以及暂停按钮
 	ctxos.globalAlpha = 1;
@@ -1701,27 +1701,29 @@ function qwqdraw1(now) {
 	if (stat.combo > 2) {
 		ctxos.textAlign = 'center';
 		ctxos.font = `${lineScale * 1.32}px Mina,Noto Sans SC`;
-		ctxos.fillText(stat.combo, wlen, lineScale * 1.375);
+		ctxos.fillText(autoplay.checked ? 'Autoplay' : 'combo', wlen, lineScale * 2.05);
+		ctxos.fillStyle = '#FFD000';
 		ctxos.globalAlpha = qwqIn.second < 0.67 ? tween[2](qwqIn.second * 1.5) : (1 - tween[2](qwqOut.second * 1.5));
 		ctxos.font = `${lineScale * 0.66}px Mina,Noto Sans SC`;
-		ctxos.fillText(autoplay.checked ? 'Autoplay' : 'combo', wlen, lineScale * 2.05);
+		ctxos.fillText(stat.combo, wlen, lineScale * 1.375);
+		ctxos.fillStyle = '#FFD000';
 	}
-	//绘制歌名和等级
-	ctxos.globalAlpha = 1;
-	ctxos.setTransform(1, 0, 0, 1, 0, lineScale * (qwqIn.second < 0.67 ? (1 - tween[2](qwqIn.second * 1.5)) : tween[2](qwqOut.second * 1.5)) * 1.75);
-	ctxos.textBaseline = 'alphabetic';
-	ctxos.textAlign = 'right';
-	ctxos.font = `${lineScale * 0.63}px Mina,Noto Sans SC`;
-	const dxlvl = ctxos.measureText(inputLevel.value || inputLevel.placeholder).width;
-	if (dxlvl > wlen - lineScale) ctxos.font = `${(lineScale) * 0.63/dxlvl*(wlen - lineScale )}px Mina,Noto Sans SC`;
-	ctxos.fillText(inputLevel.value || inputLevel.placeholder, canvasos.width - lineScale * 0.75, canvasos.height - lineScale * 0.66);
-	ctxos.drawImage(res['SongsNameBar'], lineScale * 0.53, canvasos.height - lineScale * 1.22, lineScale * 0.119, lineScale * 0.612);
-	ctxos.textAlign = 'left';
-	ctxos.font = `${lineScale * 0.63}px Mina,Noto Sans SC`;
-	const dxsnm = ctxos.measureText(inputName.value || inputName.placeholder).width;
-	if (dxsnm > wlen - lineScale) ctxos.font = `${(lineScale) * 0.63/dxsnm*(wlen - lineScale )}px Mina,Noto Sans SC`;
-	ctxos.fillText(inputName.value || inputName.placeholder, lineScale * 0.85, canvasos.height - lineScale * 0.66);
-	ctxos.resetTransform();
+	//绘制歌名和等级(旧版没有)
+	//ctxos.globalAlpha = 1;
+	//ctxos.setTransform(1, 0, 0, 1, 0, lineScale * (qwqIn.second < 0.67 ? (1 - tween[2](qwqIn.second * 1.5)) : tween[2](qwqOut.second * 1.5)) * 1.75);
+	//ctxos.textBaseline = 'alphabetic';
+	//ctxos.textAlign = 'right';
+	//ctxos.font = `${lineScale * 0.63}px Mina,Noto Sans SC`;
+	//const dxlvl = ctxos.measureText(inputLevel.value || inputLevel.placeholder).width;
+	//if (dxlvl > wlen - lineScale) ctxos.font = `${(lineScale) * 0.63/dxlvl*(wlen - lineScale )}px Mina,Noto Sans SC`;
+	//ctxos.fillText(inputLevel.value || inputLevel.placeholder, canvasos.width - lineScale * 0.75, canvasos.height - lineScale * 0.66);
+	//ctxos.drawImage(res['SongsNameBar'], lineScale * 0.53, canvasos.height - lineScale * 1.22, lineScale * 0.119, lineScale * 0.612);
+	//ctxos.textAlign = 'left';
+	//ctxos.font = `${lineScale * 0.63}px Mina,Noto Sans SC`;
+	//const dxsnm = ctxos.measureText(inputName.value || inputName.placeholder).width;
+	//if (dxsnm > wlen - lineScale) ctxos.font = `${(lineScale) * 0.63/dxsnm*(wlen - lineScale )}px Mina,Noto Sans SC`;
+	//ctxos.fillText(inputName.value || inputName.placeholder, lineScale * 0.85, canvasos.height - lineScale * 0.66);
+	//ctxos.resetTransform();
 	if (qwq[0]) {
 		//绘制时间和帧率以及note打击数
 		if (qwqIn.second < 0.67) ctxos.globalAlpha = tween[2](qwqIn.second * 1.5);
