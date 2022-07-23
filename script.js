@@ -1647,13 +1647,13 @@ function qwqdraw1(now) {
 	if (qwqIn.second >= 2.5 && !stat.lineStatus) drawLine(0); //绘制判定线(背景后0)
 	//if (qwq[4]) ctxos.filter = 'none';
 	//ctxos.globalAlpha = 1;
-	ctxos.resetTransform();
-	if (document.getElementById('imageBlur').checked) {
-		ctxos.drawImage(Renderer.bgImageBlur, ...adjustSize(Renderer.bgImageBlur, canvasos, 1));
-	} else {
-		ctxos.drawImage(Renderer.bgImage, ...adjustSize(Renderer.bgImage, canvasos, 1));
-	}
-	ctxos.fillRect(0, 0, canvasos.width, canvasos.height);
+	//ctxos.resetTransform();
+	//if (document.getElementById('imageBlur').checked) {
+		//ctxos.drawImage(Renderer.bgImageBlur, ...adjustSize(Renderer.bgImageBlur, canvasos, 1));
+	//} else {
+		//ctxos.drawImage(Renderer.bgImage, ...adjustSize(Renderer.bgImage, canvasos, 1));
+	//}
+	//ctxos.fillRect(0, 0, canvasos.width, canvasos.height);
 	ctxos.globalCompositeOperation = 'source-over';
 	//绘制进度条
 	//ctxos.setTransform(canvasos.width / 1920, 0, 0, canvasos.width / 1920, 0, lineScale * (qwqIn.second < 0.67 ? (tween[2](qwqIn.second * 1.5) - 1) : -tween[2](qwqOut.second * 1.5)) * 1.75);
@@ -1701,11 +1701,11 @@ function qwqdraw1(now) {
 	if (stat.combo > -1) {
 		ctxos.textAlign = 'center';
 		ctxos.font = `${lineScale * 0.66}px Mina,Noto Sans SC`;
-		ctxos.fillText(autoplay.checked ? 'Autoplay' : 'combo', wlen, lineScale * 2.05);
+		ctxos.fillText(autoplay.checked ? 'Autoplay' : 'combo', lineScale * 2.05);
 		ctxos.fillStyle = '#FFD000';
 		ctxos.globalAlpha = qwqIn.second < 0.67 ? tween[2](qwqIn.second * 1.5) : (1 - tween[2](qwqOut.second * 1.5));
 		ctxos.font = `${lineScale * 1.32}px Mina,Noto Sans SC`;
-		ctxos.fillText(stat.combo, wlen, lineScale * 1.375);
+		ctxos.fillText(stat.combo, lineScale * 1.375);
 		ctxos.fillStyle = '#FFD000';
 	}
 	//绘制歌名和等级(旧版没有)
@@ -1729,14 +1729,14 @@ function qwqdraw1(now) {
 		if (qwqIn.second < 0.67) ctxos.globalAlpha = tween[2](qwqIn.second * 1.5);
 		else ctxos.globalAlpha = 1 - tween[2](qwqOut.second * 1.5);
 		ctxos.textBaseline = 'middle';
-		ctxos.font = `${lineScale * 0.4}px Mina,Noto Sans SC`;
-		ctxos.textAlign = 'left';
-		ctxos.fillText(`${time2Str(qwq[5]?duration-timeBgm:timeBgm)}/${time2Str(duration)}${scfg()}`, lineScale * 0.05, lineScale * 0.5);
-		ctxos.textAlign = 'right';
-		ctxos.fillText(frameTimer.fps, canvasos.width - lineScale * 0.05, lineScale * 0.5);
+		//ctxos.font = `${lineScale * 0.4}px Mina,Noto Sans SC`;
+		//ctxos.textAlign = 'left';
+		//ctxos.fillText(`${time2Str(qwq[5]?duration-timeBgm:timeBgm)}/${time2Str(duration)}${scfg()}`, lineScale * 0.05, lineScale * 0.5);
+		//ctxos.textAlign = 'right';
+		//ctxos.fillText(frameTimer.fps, canvasos.width - lineScale * 0.05, lineScale * 0.5);
 		ctxos.textBaseline = 'alphabetic';
 		if (showPoint.checked) stat.combos.forEach((val, idx) => {
-			ctxos.fillStyle = comboColor[idx];
+			ctxos.fillStyle = '#FFD000';
 			ctxos.fillText(val, lineScale * (idx + 1) * 1.1, canvasos.height - lineScale * 0.1);
 		});
 	}
