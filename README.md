@@ -1,5 +1,5 @@
-# [Demo](https://lchz&#104;3473.github.io/sim-phi/index "原版")
-# [Demo](https://a333r.github.io/ "修改版")
+# [lchzh3473 原版](https://lchz&#104;3473.github.io/sim-phi/index "原版")
+# [修改版](https://a333r.github.io/ "修改版")
 
 
 ## 简介
